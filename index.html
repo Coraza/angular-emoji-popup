@@ -1,0 +1,28 @@
+<html ng-app="emojiApp">
+
+<head>
+	<title>Angular Emoji</title>
+    <link type="text/stylesheet" rel="stylesheet" href="css/nanoscroller.css" />
+    <link type="text/stylesheet" rel="stylesheet" href="css/emoji.css" />
+	<link type="text/stylesheet" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body ng-controller="emojiController">
+
+    <div myForm>
+        <textarea id="messageInput" ng-enter="replyToUser()" ng-model="messagetext" placeholder="Write a message..." class="ng-untouched ng-valid ng-dirty ng-valid-parse" style="display: none;"></textarea>
+    </div>
+
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/emoji.js"></script>
+    <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/emojiController.js"></script>
+    <script type="text/javascript" src="js/emojiDirectives.js"></script>
+</body>
+
+</html>
