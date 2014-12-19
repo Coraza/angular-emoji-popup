@@ -8,21 +8,35 @@
 </head>
 
 <body ng-controller="emojiController">
+<!--<h1>Angular Emoji Popup</h1>-->
+<p/>
+<p/>
+<p/>
+<p/>
 
-    <div myForm>
+    <div my-form class="myform">
         <textarea id="messageInput" ng-enter="replyToUser()" ng-model="messagetext" placeholder="Write a message..." class="ng-untouched ng-valid ng-dirty ng-valid-parse" style="display: none;"></textarea>
+
+
+     <div style="margin-right:10px;margin-top:5px;" class="im_emoji_btn" id="emojibtn" style="cursor:pointer">
+                      <i class="icon icon-emoji"  style="cursor:pointer; margin-left:20px;margin-top:10px;"></i>
+                    </div>
+
     </div>
 
 
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
+   
     <script type="text/javascript" src="js/emoji.js"></script>
     <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
 
     <script type="text/javascript" src="js/app.js"></script>
+     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/emojiController.js"></script>
     <script type="text/javascript" src="js/emojiDirectives.js"></script>
+    <script type="text/javascript" src="js/nanoscroller.js"></script>
+
 </body>
 
 </html>
