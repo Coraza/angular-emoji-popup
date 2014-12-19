@@ -26,6 +26,8 @@
 	var TAGS_BLOCK = [ 'p', 'div', 'pre', 'form' ];
 	var KEY_ESC = 27;
 	var KEY_TAB = 9;
+	var Config = {};
+	Config.Mobile = false;
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -274,7 +276,7 @@
 				+ xoffset + 'px ' + yoffset + 'px no-repeat;';
 		style += 'background-size:' + scaledWidth + 'px ' + scaledHeight
 				+ 'px;';
-		return '<img src="/chat-dashboard/images/blank.gif" class="img" style="'
+		return '<img src="/img/blank.gif" class="img" style="'
 				+ style + '" alt="' + util.htmlEntities(name) + '">';
 	};
 	

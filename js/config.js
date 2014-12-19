@@ -1,6 +1,7 @@
 'use strict';
 
-emojiApp.provider('ConfigProvider', function()
+
+emojiApp.provider('Config', function()
 {
     var Config = {};
     Config.Emoji = {
@@ -3479,11 +3480,6 @@ emojiApp.provider('ConfigProvider', function()
     };
 });
 
-
-
-
-
-
 //ConfigStorage
 (function(window)
 {
@@ -3670,5 +3666,6 @@ emojiApp.provider('ConfigProvider', function()
         set: storageSetValue,
         remove: storageRemoveValue
     };
+
 
 })(this);

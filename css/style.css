@@ -1,4 +1,9 @@
 
+.form-control
+{
+  width: 500px;
+}
+
 .form-control:focus {
 border-color: #66afe9;
 outline: 0;
