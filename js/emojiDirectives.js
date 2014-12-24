@@ -25,7 +25,6 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
     {
         var messageField = $('textarea', element)[0],
             fileSelects = $('input', element),
-            dropbox = $('#dropbox', element)[0],
             emojiButton = $('#emojibtn', element)[0],
             editorElement = messageField,
             dragStarted, dragTimeout,
@@ -55,7 +54,6 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
 
             var updatePromise;
             $(richTextarea)
-                .on('DOMNodeInserted', onPastedImageEvent)
                 .on(
                     'keyup',
                     function(e)
@@ -71,34 +69,11 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
                                 });
                         }
 
-                        $timeout.cancel(updatePromise);
-                        updatePromise = $timeout(
-                            updateValue, 1000);
                     });
         }
 
-        // Head is sometimes slower
-        /*
-         * $timeout(function () { fileSelects .on('change',
-         * function () { var self = this; $scope.$apply(function () {
-         * $scope.draftMessage.files =
-         * Array.prototype.slice.call(self.files);
-         * $scope.draftMessage.isMedia =
-         * $(self).hasClass('im_media_attach_input') ||
-         * Config.Mobile; setTimeout(function () { try {
-         * self.value = ''; } catch (e) {}; }, 1000); }); }); },
-         * 1000);
-         */
-
         var sendOnEnter = true;
-        /*
-         * updateSendSettings = function () {
-         * Storage.get('send_ctrlenter').then(function
-         * (sendOnCtrl) { sendOnEnter = !sendOnCtrl; }); };
-         */
 
-        // $scope.$on('settings_changed', updateSendSettings);
-        // updateSendSettings();
         $(editorElement).on(
             'keydown',
             function(e)
@@ -142,18 +117,6 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
             resetTyping();
             return cancelEvent(e);
         });
-
-        /*
-         * var lastTyping = 0, lastLength;
-         * $(editorElement).on('keyup', function (e) { var now =
-         * tsNow(), length = (editorElement[richTextarea ?
-         * 'textContent' : 'value']).length;
-         *
-         *
-         * if (now - lastTyping > 5000 && length != lastLength) {
-         * lastTyping = now; lastLength = length;
-         * $scope.$emit('ui_typing'); } });
-         */
 
         function resetTyping()
         {
@@ -207,28 +170,7 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
         }
         $(document).on('keydown', onKeyDown);
 
-        $('body').on('dragenter dragleave dragover drop',
-            onDragDropEvent);
-        $(document).on('paste', onPasteEvent);
-
-        /*
-         * if (!Config.Navigator.touch) {
-         * $scope.$on('ui_peer_change', focusField);
-         * $scope.$on('ui_history_focus', focusField);
-         * $scope.$on('ui_history_change', focusField); }
-         *
-         * $scope.$on('ui_peer_change', resetTyping);
-         * $scope.$on('ui_peer_draft', updateRichTextarea);
-         */
-
         var sendAwaiting = false;
-        /*
-         * $scope.$on('ui_message_before_send', function () {
-         * sendAwaiting = true; $timeout.cancel(updatePromise);
-         * updateValue(); }); $scope.$on('ui_message_send',
-         * function () { sendAwaiting = false; focusField(); });
-         */
-
         function focusField()
         {
             onContentLoaded(function()
@@ -236,139 +178,6 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
                 editorElement.focus();
             });
         }
-
-        function onPastedImageEvent(e)
-        {
-            console.log("onPastedImageEvent");
-            var element = (e.originalEvent || e).target,
-                src = (element ||
-                {}).src || '',
-                remove = false;
-
-            if (src.substr(0, 5) == 'data:')
-            {
-                remove = true;
-                var blob = dataUrlToBlob(src);
-                ErrorService.confirm(
-                {
-                    type: 'FILE_CLIPBOARD_PASTE'
-                }).then(function()
-                {
-                    $scope.draftMessage.files = [blob];
-                    $scope.draftMessage.isMedia = true;
-                });
-                setZeroTimeout(function()
-                {
-                    element.parentNode.removeChild(element);
-                })
-            }
-            else if (src && !src.match(/\/blank\.gif/))
-            {
-                var replacementNode = document
-                    .createTextNode(' ' + src + ' ');
-                setTimeout(function()
-                {
-                    element.parentNode.replaceChild(
-                        replacementNode, element);
-                }, 100);
-            }
-        };
-
-        function onPasteEvent(e)
-        {
-            console.log("onPasteEvent");
-            var cData = (e.originalEvent || e).clipboardData,
-                items = cData && cData.items || [],
-                files = [],
-                file, i;
-
-            for (i = 0; i < items.length; i++)
-            {
-                if (items[i].kind == 'file')
-                {
-                    file = items[i].getAsFile();
-                    files.push(file);
-                }
-            }
-
-            if (files.length > 0)
-            {
-                ErrorService.confirm(
-                {
-                    type: 'FILES_CLIPBOARD_PASTE',
-                    files: files
-                }).then(function()
-                {
-                    $scope.draftMessage.files = files;
-                    $scope.draftMessage.isMedia = true;
-                });
-            }
-        }
-
-        function onDragDropEvent(e)
-        {
-            var dragStateChanged = false;
-            if (!dragStarted || dragStarted == 1)
-            {
-                dragStarted = checkDragEvent(e) ? 2 : 1;
-                dragStateChanged = true;
-            }
-            if (dragStarted == 2)
-            {
-                if (dragTimeout)
-                {
-                    setTimeout(function()
-                    {
-                        clearTimeout(dragTimeout);
-                        dragTimeout = false;
-                    }, 0);
-                }
-
-                if (e.type == 'dragenter' || e.type == 'dragover')
-                {
-                    if (dragStateChanged)
-                    {
-                        /*
-                         * $(dropbox).css( { height :
-                         * $(editorElement) .height() + 12,
-                         * width : $(editorElement) .width() +
-                         * 12 }).show();
-                         */
-                    }
-                }
-                else
-                {
-                    if (e.type == 'drop')
-                    {
-                        $scope
-                            .$apply(function()
-                            {
-                                $scope.draftMessage.files = Array.prototype.slice
-                                    .call(e.originalEvent.dataTransfer.files);
-                                if ($scope.draftMessage.files.length == 1)
-                                {
-                                    $scope.draftMessage
-                                        .uploadSingleFile($scope.draftMessage.files[0]);
-                                }
-                                else if ($scope.draftMessage.files.length > 1)
-                                {
-                                    alert('Uploading multiple files is not supported');
-                                    return;
-                                }
-
-                            });
-                    }
-                    dragTimeout = setTimeout(function()
-                    {
-                        // $(dropbox).hide();
-                        dragStarted = false;
-                        dragTimeout = false;
-                    }, 300);
-                }
-            }
-
-            return cancelEvent(e);
-        };
 
         $scope.$on('$destroy', function cleanup()
         {
@@ -386,10 +195,5 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
             }
             $(editorElement).off('keydown');
         });
-
-        /*
-         * if (!Config.Navigator.touch) { focusField(); }
-         */
-
     }
 }]);

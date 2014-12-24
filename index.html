@@ -8,24 +8,22 @@
 </head>
 
 <body ng-controller="emojiController">
-    <!--<h1>Angular Emoji Popup</h1>-->
-    <p/>
-    <p/>
-    <p/>
-    <p/>
-
-    <div my-form class="myform">
-        <textarea id="messageInput" ng-enter="replyToUser()" ng-model="messagetext" placeholder="Write a message..." class="ng-untouched ng-valid ng-dirty ng-valid-parse" style="display: none;"></textarea>
+    <h1>Angular Emoji Popup</h1>
 
 
-        <div style="margin-right:10px;margin-top:5px;" class="im_emoji_btn" id="emojibtn" style="cursor:pointer">
-            <i class="icon icon-emoji" style="cursor:pointer; margin-left:20px;margin-top:10px;"></i>
+    <div class="myform">
+        <div my-form>
+            <textarea id="messageInput" ng-enter="replyToUser()" ng-model="messagetext" placeholder="Write a message..." class="ng-untouched ng-valid ng-dirty ng-valid-parse" style="display: none;"></textarea>
+
+
+            <div style="margin-right:10px;margin-top:5px;" class="im_emoji_btn" id="emojibtn" style="cursor:pointer">
+                <i class="icon icon-emoji" style="cursor:pointer; margin-left:20px;margin-top:10px;"></i>
+            </div>
         </div>
-        <br/>
-        <span style="float:clear"></span>
-        <div> String with Colons: </div>
+
+        <div style="text-align:left;height:50px;width:500px"> String with Colons: </div>
         <div>
-            <input class="form-control" ng-model="messagetext">
+            <div class="form-control" style="height:50px;width:500px" ng-bind-html="messagetext"></div>
         </div>
 
         <div> String with UTF Chars: (Will not display fine in input box) </div>
@@ -38,6 +36,7 @@
 
 
     <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular-sanitize.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 
     <script type="text/javascript" src="js/emoji.js"></script>

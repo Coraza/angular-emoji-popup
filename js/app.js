@@ -1,6 +1,6 @@
 'use strict';
 
-var emojiApp = angular.module("emojiApp", []);
+var emojiApp = angular.module("emojiApp", ['ngSanitize']);
 
 emojiApp.config(function(ConfigProvider)
 {
