@@ -6,7 +6,7 @@ emojiApp.config(function($sceProvider)
 {
 
   $sceProvider.enabled(false);
-  
+
     var icons = {},
         reverseIcons = {},
         i, j, hex, name, dataItem, row, column, totalColumns;
@@ -27,7 +27,7 @@ emojiApp.config(function($sceProvider)
         }
     }
 
-    $.emojiarea.spritesheetPath = '/img/emojisprite_!.png';
+    $.emojiarea.spritesheetPath = 'img/emojisprite_!.png';
     $.emojiarea.spritesheetDimens = Config.EmojiCategorySpritesheetDimens;
     $.emojiarea.iconSize = 20;
     $.emojiarea.icons = icons;
