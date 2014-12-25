@@ -9,100 +9,124 @@
     <link type="text/stylesheet" rel="stylesheet" href="css/nanoscroller.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/emoji.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/style.css" />
-     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 </head>
-  <a href="https://github.com/madhur/angular-emoji-popup"><img style="position: absolute; top: 0; right: 30px; border: 0;" src="img/gh-ribbon.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/madhur/angular-emoji-popup"><img style="position: absolute; top: 0; right: 30px; border: 0;" src="img/gh-ribbon.png" alt="Fork me on GitHub">
+</a>
+
 <body ng-controller="emojiController">
 
-<div class="container">
-    <div class="row">
-    <div class="col-md-12">
-    <h1 style="text-align:center">Angular Emoji Popup</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align:center">Angular Emoji Popup</h1>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h2>Encoding</h2>
+                <h1 class="visible-md visible-lg">&nbsp;</h1>
+
+                <div class="myform form-group">
+
+                    <div emoji-form emoji-message="emojiMessage">
+                        <textarea class="form-control" id="messageInput" ng-model="emojiMessage.messagetext" placeholder="Write a message..."></textarea>
+
+
+                        <button class="btn btn-default im_emoji_btn pull-right visible-md visible-lg" id="emojibtn">
+                            <i class="icon icon-emoji"></i>
+                        </button>
+                        <button class="btn btn-default im_emoji_btn visible-sm" id="emojibtn">
+                            <i class="icon icon-emoji"></i>
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <h4>Raw: </h4>
+                    <div class="form-control" style="height:200px; overflow:auto" ng-bind="emojiMessage.rawhtml"></div>
+
+
+                    <pre>
+&lt;div ng-bind="emojiMessage.rawhtml"&gt;&lt;/div&gt;
+                    </pre>
+                    
+                     <h4>Colons: </h4>
+                    <div class="form-control" style="height:50px;overflow:auto" ng-bind="emojiMessage.messagetext"></div>
+
+                    <pre>
+&lt;div ng-bind="emojiMessage.messagetext"&gt;&lt;/div&gt;
+                    </pre>
+
+                    <h4>Parsed: </h4>
+                    <div class="form-control" style="height:50px;overflow:auto" ng-bind-html="emojiMessage.rawhtml"></div>
+
+                    <pre>
+&lt;div ng-bind-html="emojiMessage.messagetext"&gt;&lt;/div&gt;
+                    </pre>
+
+                    <h4>Unicode: (Will not display fine unless proper font is used) </h4>
+                    <div class="form-control" style="height:50px;overflow:auto"  ng-bind="emojiMessage.messagetext | colonToSmiley"> </div>
+
+
+                    <pre>
+&lt;div ng-bind="emojiMessage.messagetext | colonToSmiley "&gt;&lt;/div&gt;
+                    </pre>                    
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h2>Decoding</h2>
+                <h1 class="visible-md visible-lg">&nbsp;</h1>
+
+                <div class="form-group">
+
+                    <textarea class="form-control userinput" id="messageInput" ng-model="emojiMessage.encodedtext" placeholder="Enter encoded text..."></textarea>
+                    <h4>Decode mode</h4>
+                    <ul>
+                        <li class="radio">
+                            <label>
+                                <input type="radio" name="optradio">Auto</label>
+                        </li>
+                        <li class="radio">
+                            <label>
+                                <input type="radio" name="optradio">Colon</label>
+                        </li>
+                        <li class="radio">
+                            <label>
+                                <input type="radio" name="optradio">Unicode</label>
+                        </li>
+                         <li class="radio">
+                            <label>
+                                <input type="radio" name="optradio">HTML</label>
+                        </li>
+                    </ul>
+                    <h1 class="visible-md visible-lg">&nbsp;</h1>
+                    <h4>Decoded message with smileys: </h4>
+                    <div class="form-control" ng-bind="emojiMessage.encodedtext"></div>
+
+
+                </div>
+
+            </div>
+        </div>
     </div>
-    </div>
-
-    <div class="row">
-
-    <div class="col-md-6">
-    
-    <h2>Encoding</h2>
-    <h1 class="visible-md visible-lg">&nbsp;</h1>
-
-    <div class="myform form-group">
-
-        <div emoji-form emoji-message="emojiMessage">
-            <textarea class="form-control" id="messageInput" ng-enter="replyToUser()" ng-model="emojiMessage.messagetext" placeholder="Write a message..."></textarea>
-
-
-            <button  class="btn btn-default im_emoji_btn pull-right" id="emojibtn">
-                <i class="icon icon-emoji"></i>
-            </button>
-        </div>
-        <div class="clearfix"></div>
-
-        <h4>Raw Html: </h4>
-        <div>
-            <div class="form-control" style="height:200px; overflow:auto" ng-bind="emojiMessage.rawhtml"></div>
-        </div>
-
-         <h4>Parsed Html: </h4>
-        <div>
-            <div class="form-control" style="height:50px;overflow:auto" ng-bind-html="emojiMessage.rawhtml"></div>
-        </div>
-
-        <h4> String with Colons: </h4>
-        <div>
-            <div class="form-control" style="height:50px;overflow:auto" ng-bind="emojiMessage.messagetext"></div>
-        </div>
-
-
-        <h4> String with UTF Chars: (Will not display fine in input box) </h4>
-        <div>
-            <input class="form-control" ng-model="emojiMessage.messagetext"> 
-        </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-    
-    <h2>Decoding</h2>
- <h1 class="visible-md visible-lg">&nbsp;</h1>
-
-    <div class="form-group">
-
-        <div>
-            <textarea class="form-control" id="messageInput" ng-enter="replyToUser()" ng-model="emojiMessage.messagetext" placeholder="Write a message..."></textarea>
-        </div>
-
- <h1 class="visible-md visible-lg">&nbsp;</h1>
-        <div>String with Colons: </div>
-        <div>
-            <div class="form-control" ng-bind="emojiMessage.messagetext"></div>
-        </div>
-
- <h1 class="visible-md visible-lg">&nbsp;</h1>
-        <div> String with UTF Chars: (Will not display fine in input box) </div>
-        <div>
-            <input class="form-control" ng-model="emojiMessage.messagetext"> 
-        </div>
-
-        </div>
-
-    </div>
-</div>
-</div>
 
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-sanitize.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
-     <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
+    <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
     <script type="text/javascript" src="js/emoji.js"></script>
     <script type="text/javascript" src="js/emojiController.js"></script>
     <script type="text/javascript" src="js/emojiDirectives.js"></script>
+    <script type="text/javascript" src="js/emojiFilters.js"></script>
     <script type="text/javascript" src="js/nanoscroller.js"></script>
 
 </body>

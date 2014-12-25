@@ -3454,21 +3454,92 @@ Config.smileys = {
     "D:": "anguished"
 };
 
-
-var a = [];
+Config.inits = {};
 Config.map = {};
+
+Config.mapcolon = {};
+var a = [];
 Config.reversemap = {};
 
-for (var i in Config.emoji_data)
+Config.init_emoticons = function()
 {
-    for (var j = 0; j < Config.emoji_data[i][0].length; j++)
+    if (Config.inits.emoticons)
+        return;
+    Config.init_colons(); // we require this for the emoticons map
+    Config.inits.emoticons = 1;
+
+    var a = [];
+    Config.map.emoticons = {};
+    for (var i in Config.emoticons_data)
     {
-        // it is a map of {"colon smiley":"unicode char"}
-        Config.map[Config.emoji_data[i][3][0]] = Config.emoji_data[i][0][0];
-        // it is a map of {"unicode char": "colon smiley"}
-        Config.reversemap[Config.emoji_data[i][0][0]] = Config.emoji_data[i][3][0];
+        // because we never see some characters in our text except as
+        // entities, we must do some replacing
+        var emoticon = i.replace(/\&/g, '&amp;').replace(/\</g, '&lt;')
+            .replace(/\>/g, '&gt;');
+
+        if (!Config.map.colons[emoji.emoticons_data[i]])
+            continue;
+
+        Config.map.emoticons[emoticon] = Config.map.colons[Config.emoticons_data[i]];
+        a.push(Config.escape_rx(emoticon));
+    }
+    Config.rx_emoticons = new RegExp(
+        ('(^|\\s)(' + a.join('|') + ')(?=$|[\\s|\\?\\.,!])'), 'g');
+};
+Config.init_colons = function()
+{
+    if (Config.inits.colons)
+        return;
+    Config.inits.colons = 1;
+    Config.rx_colons = new RegExp('\:[^\\s:]+\:', 'g');
+    Config.map.colons = {};
+    for (var i in Config.data)
+    {
+        for (var j = 0; j < Config.data[i][3].length; j++)
+        {
+            Config.map.colons[emoji.data[i][3][j]] = i;
+        }
+    }
+};
+Config.init_unified = function()
+{
+    if (Config.inits.unified)
+        return;
+    Config.inits.unified = 1;
+
+    buildMap();
+
+};
+
+
+Config.escape_rx = function(text)
+{
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
+function buildMap()
+{
+
+    var a = [];
+    for (var i in Config.emoji_data)
+    {
+        for (var j = 0; j < Config.emoji_data[i][0].length; j++)
+        {
+            a.push(
+Config.escape_rx (":"+Config.emoji_data[i][3][0])+":");
+
+            // it is a map of {"colon smiley":"unicode char"}
+            Config.map[Config.emoji_data[i][3][0]] = Config.emoji_data[i][0][0];
+            Config.mapcolon[":"+Config.emoji_data[i][3][0]+":"] = Config.emoji_data[i][0][0];
+            // it is a map of {"unicode char": "colon smiley"}
+            Config.reversemap[Config.emoji_data[i][0][0]] = Config.emoji_data[i][3][0];
+        }
+
+        Config.rx_unified = new RegExp('(' + a.join('|') + ')', "g");
     }
 }
+
+
 
 
 //ConfigStorage

@@ -189,8 +189,30 @@ opacity: 1;
     width:100%;
 }
 
-.form-control
+.form-control,pre
 {
   background-color:black;
   color:white;
+}
+
+ul li, .radio
+{
+  display:inline;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+pre
+{
+  background-color: #555555;
+  margin-top:20px;
+  border:none;
+}
+
+.emoji-wysiwyg-editor, .userinput
+{
+  background-color: white;
+  color:black;
 }
