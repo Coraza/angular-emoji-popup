@@ -3520,13 +3520,13 @@ Config.escape_rx = function(text)
 function buildMap()
 {
 
-    var a = [];
+    var colons = [],codes=[];
     for (var i in Config.emoji_data)
     {
         for (var j = 0; j < Config.emoji_data[i][0].length; j++)
         {
-            a.push(
-Config.escape_rx (":"+Config.emoji_data[i][3][0])+":");
+            colons.push(Config.escape_rx (":"+Config.emoji_data[i][3][0])+":");
+            codes.push(Config.emoji_data[i][0][0]);
 
             // it is a map of {"colon smiley":"unicode char"}
             Config.map[Config.emoji_data[i][3][0]] = Config.emoji_data[i][0][0];
@@ -3535,7 +3535,8 @@ Config.escape_rx (":"+Config.emoji_data[i][3][0])+":");
             Config.reversemap[Config.emoji_data[i][0][0]] = Config.emoji_data[i][3][0];
         }
 
-        Config.rx_unified = new RegExp('(' + a.join('|') + ')', "g");
+        Config.rx_colons = new RegExp('(' + colons.join('|') + ')', "g");
+        Config.rx_codes = new RegExp('(' + codes.join('|') + ')', "g");
     }
 }
 

@@ -1,15 +1,15 @@
 'use strict';
-emojiApp.filter('colonToSmiley', function() {
+emojiApp.filter('colonToCode', function() {
 
 	return function(input) {
 
 		if(!input)
 			return "";
 
-		if(!Config.rx_unified)
+		if(!Config.rx_colons)
 			Config.init_unified();
 
-		 return input.replace(Config.rx_unified, function(m)
+		 return input.replace(Config.rx_colons, function(m)
         {
             var val = Config.mapcolon[m];
             if (val)
@@ -23,18 +23,48 @@ emojiApp.filter('colonToSmiley', function() {
 	};
 });
 
-
-emojiApp.filter('unicodeToSmiley', function() {
+emojiApp.filter('codeToSmiley', function() {
 
 	return function(input) {
 
-		 return str.replace(emoji.rx_unified, function(m)
+		if(!input)
+			return "";
+
+		if(!Config.rx_codes)
+			Config.init_unified();
+
+		 return input.replace(Config.rx_codes, function(m)
         {
             var val = Config.reversemap[m];
-            if (val)
+			if (val) {
+				val = ":" + val + ":";
+
+				var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);
+				return $img;
+			}
+			else
+				return "";
+        });
+
+	};
+});
+
+
+emojiApp.filter('colonToSmiley', function() {
+
+	return function(input) {
+
+		if(!input)
+			return "";
+
+		if(!Config.rx_colons)
+			Config.init_unified();
+
+		 return input.replace(Config.rx_colons, function(m)
+        {
+            if (m)
             {
-                val = ":" + val + ":";
-                var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);
+                var $img = $.emojiarea.createIcon($.emojiarea.icons[m]);
                 return $img;
             }
             else

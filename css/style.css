@@ -215,4 +215,10 @@ pre
 {
   background-color: white;
   color:black;
+  overflow:auto;
+}
+
+.emoji-wysiwyg-editor
+{
+  height: 52px;
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Angular Emoji</title>
+    <title>AngularJs Emoji Popup Demo</title>
     <link type="text/stylesheet" rel="stylesheet" href="css/bootstrap.min.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/nanoscroller.css" />
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="text-align:center">Angular Emoji Popup</h1>
+                <h1 style="text-align:center">AngularJs Emoji Popup Demo</h1>
             </div>
         </div>
 
@@ -44,36 +44,41 @@
                         </button>
                     </div>
                     <div class="clearfix"></div>
+                    
+                    
+<pre>&lt;div emoji-form emoji-message="emojiMessage"&gt;                    
+    &lt;textarea id="messageInput" ng-model="emojiMessage.messagetext" /&gt;&lt;/textarea&gt;
+    &lt;button id="emojibtn"&gt;
+        &lt;i class="icon icon-emoji"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</pre>
+
 
                     <h4>Raw: </h4>
                     <div class="form-control" style="height:200px; overflow:auto" ng-bind="emojiMessage.rawhtml"></div>
 
 
                     <pre>
-&lt;div ng-bind="emojiMessage.rawhtml"&gt;&lt;/div&gt;
-                    </pre>
+&lt;div ng-bind="emojiMessage.rawhtml"&gt;&lt;/div&gt;</pre>
                     
                      <h4>Colons: </h4>
                     <div class="form-control" style="height:50px;overflow:auto" ng-bind="emojiMessage.messagetext"></div>
 
                     <pre>
-&lt;div ng-bind="emojiMessage.messagetext"&gt;&lt;/div&gt;
-                    </pre>
+&lt;div ng-bind="emojiMessage.messagetext"&gt;&lt;/div&gt;</pre>
 
                     <h4>Parsed: </h4>
                     <div class="form-control" style="height:50px;overflow:auto" ng-bind-html="emojiMessage.rawhtml"></div>
 
                     <pre>
-&lt;div ng-bind-html="emojiMessage.messagetext"&gt;&lt;/div&gt;
-                    </pre>
+&lt;div ng-bind-html="emojiMessage.messagetext"&gt;&lt;/div&gt;</pre>
 
-                    <h4>Unicode: (Will not display fine unless proper font is used) </h4>
-                    <div class="form-control" style="height:50px;overflow:auto"  ng-bind="emojiMessage.messagetext | colonToSmiley"> </div>
+                    <h4>Unicode: (Some emoji might be unreadable) </h4>
+                    <div class="form-control" style="height:50px;overflow:auto"  ng-bind="emojiMessage.messagetext | colonToCode"> </div>
 
 
                     <pre>
-&lt;div ng-bind="emojiMessage.messagetext | colonToSmiley "&gt;&lt;/div&gt;
-                    </pre>                    
+&lt;div ng-bind="emojiMessage.messagetext | colonToCode "&gt;&lt;/div&gt;</pre>                    
 
                 </div>
 
@@ -87,29 +92,30 @@
                 <div class="form-group">
 
                     <textarea class="form-control userinput" id="messageInput" ng-model="emojiMessage.encodedtext" placeholder="Enter encoded text..."></textarea>
+<pre style="margin-top:65px">&lt;textarea id="messageInput" ng-model="emojiMessage.encodedtext"&gt;&lt;/textarea&gt;</pre>                    
                     <h4>Decode mode</h4>
                     <ul>
                         <li class="radio">
                             <label>
-                                <input type="radio" name="optradio">Auto</label>
+                                <input type="radio" ng-model="decodeType" value="colon" name="optradio">Colon</label>
                         </li>
                         <li class="radio">
                             <label>
-                                <input type="radio" name="optradio">Colon</label>
-                        </li>
-                        <li class="radio">
-                            <label>
-                                <input type="radio" name="optradio">Unicode</label>
+                                <input type="radio" ng-model="decodeType" value="unicode" name="optradio">Unicode</label>
                         </li>
                          <li class="radio">
                             <label>
-                                <input type="radio" name="optradio">HTML</label>
+                                <input type="radio" ng-model="decodeType" value="html" name="optradio">HTML</label>
                         </li>
                     </ul>
                     <h1 class="visible-md visible-lg">&nbsp;</h1>
-                    <h4>Decoded message with smileys: </h4>
-                    <div class="form-control" ng-bind="emojiMessage.encodedtext"></div>
-
+                    <h4>Decoded message: </h4>
+                    <div class="form-control"  style="height:50px;overflow:auto"  ng-show="decodeType=='colon'" ng-bind-html="emojiMessage.encodedtext | colonToSmiley"></div>
+<pre ng-show="decodeType=='colon'">&lt;div ng-bind-html="emojiMessage.encodedtext | colonToSmiley"&gt;&lt;/div&gt;</pre>                    
+                    <div class="form-control"  style="height:50px;overflow:auto"  ng-show="decodeType=='unicode'" ng-bind-html="emojiMessage.encodedtext | codeToSmiley"></div>
+<pre ng-show="decodeType=='unicode'">&lt;div ng-bind-html="emojiMessage.encodedtext | codeToSmiley"&gt;&lt;/div&gt;</pre>                        
+                    <div class="form-control"  style="height:50px;overflow:auto"  ng-show="decodeType=='html'" ng-bind-html="emojiMessage.encodedtext"></div>
+<pre ng-show="decodeType=='html'">&lt;div ng-bind-html="emojiMessage.encodedtext"&gt;&lt;/div&gt;</pre>
 
                 </div>
 
@@ -123,7 +129,6 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
-    <script type="text/javascript" src="js/emoji.js"></script>
     <script type="text/javascript" src="js/emojiController.js"></script>
     <script type="text/javascript" src="js/emojiDirectives.js"></script>
     <script type="text/javascript" src="js/emojiFilters.js"></script>
