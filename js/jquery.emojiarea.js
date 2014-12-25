@@ -338,7 +338,8 @@
 		this.$editor.text($textarea.val());
 		this.$editor.attr({
 			contenteditable : 'true',
-			id : 'messageDiv'
+			id : 'messageDiv',
+			'ng-model': 'emojiMessage.rawhtml'
 		});
 		// this.$editor.attr({'ng-enter': 'replyToUser()'});
 
@@ -494,11 +495,11 @@
 				if (tagName === 'img') {
 					var alt = node.getAttribute('alt') || '';
 					if (alt) {
-						var code = alt.substring(1, alt.length - 1);
+						//var code = alt.substring(1, alt.length - 1);
 						//var smileyCode = Config.map[code];
 
 						//if (smileyCode)
-							line.push(code);
+							line.push(alt);
 
 					}
 					return;

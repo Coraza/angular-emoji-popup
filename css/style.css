@@ -1,7 +1,12 @@
-
-.form-control
+body
 {
-  width: 500px;
+  background: #222222 url("/img/black_linen_v2.png")  repeat;
+  color: #aaaaaa;
+}
+
+h1
+{
+  color:white;
 }
 
 .form-control:focus {
@@ -43,16 +48,12 @@ opacity: 1;
 }
 
 .emoji-wysiwyg-editor {
-	float:left;
-	margin-left:2px;
 	padding:6px;
-  box-sizing: content-box;
   -moz-box-sizing: content-box;
   font-size: 12px;
   margin-bottom: 10px;
   min-height: 36px;
   height: 30px;
-  width: 500px;
   max-height: 284px;
   overflow: auto;
   line-height: 17px;
@@ -182,10 +183,14 @@ opacity: 1;
   display: none;
 }
 
-.myform
+.emojiForm
 {
-	 position: fixed;
-    top: 20%;
+    top: 50%;
     width:100%;
-    left: 20%;
+}
+
+.form-control
+{
+  background-color:black;
+  color:white;
 }

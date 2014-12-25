@@ -1,24 +1,13 @@
 'use strict';
 
 
-emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($timeout, $http, $interpolate)
+emojiApp.directive('emojiForm', ['$timeout', '$http', '$interpolate','$compile', function($timeout, $http, $interpolate, $compile)
 {
-    // Runs during compile
     return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
         scope:
         {
             emojiMessage: '='
         },
-        // controller: function($scope, $element, $attrs, $transclude) {},
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        // template: '',
-        // templateUrl: '',
-        // replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
         link: link
     };
 
@@ -28,18 +17,18 @@ emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($tim
             fileSelects = $('input', element),
             emojiButton = $('#emojibtn', element)[0],
             editorElement = messageField,
-            dragStarted, dragTimeout,
-
             emojiArea = $(messageField).emojiarea(
             {
                 button: emojiButton,
                 norealTime: true
             }),
             emojiMenu = $('.emoji-menu', element)[0],
-            submitBtn = $(
-                '.im_submit', element)[0],
             richTextarea = $(
                 '.emoji-wysiwyg-editor', element)[0];
+
+            var s = $compile($("#messageDiv"));
+            $("#messageDiv").replaceWith(s($scope));
+
 
         if (richTextarea)
         {
@@ -105,7 +94,7 @@ emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($tim
                     {
                         $timeout.cancel(updatePromise);
                         updateValue();
-                        $scope.draftMessage.replyToUser();
+                        $scope.emojiMessage.replyToUser();
                         // $(element).trigger('message_send');
                         resetTyping();
                         return cancelEvent(e);
@@ -114,15 +103,14 @@ emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($tim
 
             });
 
-        $(submitBtn).on('mousedown touchstart', function(e)
-        {
-            $timeout.cancel(updatePromise);
-            updateValue();
-            $scope.draftMessage.replyToUser();
-            // $(element).trigger('message_send');
-            resetTyping();
-            return cancelEvent(e);
-        });
+        // $(submitBtn).on('mousedown touchstart', function(e)
+        // {
+        //     $timeout.cancel(updatePromise);
+        //     updateValue();
+        //     $scope.draftMessage.replyToUser();
+        //     resetTyping();
+        //     return cancelEvent(e);
+        // });
 
         function resetTyping()
         {
@@ -256,8 +244,6 @@ emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($tim
         $scope.$on('$destroy', function cleanup()
         {
 
-            $('body').off('dragenter dragleave dragover drop',
-                onDragDropEvent);
             $(document).off('paste', onPasteEvent);
             $(document).off('keydown', onKeyDown);
             $(submitBtn).off('mousedown')

@@ -2,14 +2,11 @@
 
 emojiApp.controller('emojiController', ['$scope', '$log', function($scope, $log) {
 
-	$scope.emoji = {};
 	$scope.emojiMessage={};
 
-	
-
-	$scope.emoji.replyToUser = function()
+	$scope.emojiMessage.replyToUser = function()
 	{
-		alert('You typed' + $scope.messagetext);
+		alert('You typed ' + $scope.emojiMessage.messagetext);
 	}
 
 

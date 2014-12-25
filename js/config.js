@@ -3463,9 +3463,9 @@ for (var i in Config.emoji_data)
 {
     for (var j = 0; j < Config.emoji_data[i][0].length; j++)
     {
-        // a.push(emoji_data[i][0][j]);
-        // it is a map of {"smiley":"unicode char"}
+        // it is a map of {"colon smiley":"unicode char"}
         Config.map[Config.emoji_data[i][3][0]] = Config.emoji_data[i][0][0];
+        // it is a map of {"unicode char": "colon smiley"}
         Config.reversemap[Config.emoji_data[i][0][0]] = Config.emoji_data[i][3][0];
     }
 }
