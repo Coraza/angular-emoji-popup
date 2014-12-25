@@ -1,7 +1,7 @@
 'use strict';
 
 
-emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpolate)
+emojiApp.directive('myForm', ['$timeout', '$http', '$interpolate', function($timeout, $http, $interpolate)
 {
     // Runs during compile
     return {
@@ -9,10 +9,11 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
         // priority: 1,
         // terminal: true,
         scope:
-        {}, // {} = isolate, true = child, false/undefined = no change
+        {
+            emojiMessage: '='
+        },
         // controller: function($scope, $element, $attrs, $transclude) {},
         // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        restrict: 'AE', // E = Element, A = Attribute, C = Class, M = Comment
         // template: '',
         // templateUrl: '',
         // replace: true,
@@ -54,6 +55,7 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
 
             var updatePromise;
             $(richTextarea)
+                .on('DOMNodeInserted', onPastedImageEvent)
                 .on(
                     'keyup',
                     function(e)
@@ -65,9 +67,13 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
                             $scope
                                 .$apply(function()
                                 {
-                                    $scope.messagetext = richTextarea.textContent;
+                                    $scope.emojiMessage.messagetext = richTextarea.textContent;
                                 });
                         }
+
+                        $timeout.cancel(updatePromise);
+                        updatePromise = $timeout(
+                            updateValue, 1000);
 
                     });
         }
@@ -160,6 +166,72 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
             }
         };
 
+        function onPastedImageEvent(e)
+        {
+            var element = (e.originalEvent || e).target,
+                src = (element ||
+                {}).src || '',
+                remove = false;
+
+            if (src.substr(0, 5) == 'data:')
+            {
+                remove = true;
+                var blob = dataUrlToBlob(src);
+                ErrorService.confirm(
+                {
+                    type: 'FILE_CLIPBOARD_PASTE'
+                }).then(function()
+                {
+                    $scope.draftMessage.files = [blob];
+                    $scope.draftMessage.isMedia = true;
+                });
+                setZeroTimeout(function()
+                {
+                    element.parentNode.removeChild(element);
+                })
+            }
+            else if (src && !src.match(/img\/blank\.gif/))
+            {
+                var replacementNode = document.createTextNode(' ' + src + ' ');
+                setTimeout(function()
+                {
+                    element.parentNode.replaceChild(replacementNode, element);
+                }, 100);
+            }
+        };
+
+
+        function onPasteEvent(e)
+        {
+            console.log("onPasteEvent");
+            var cData = (e.originalEvent || e).clipboardData,
+                items = cData && cData.items || [],
+                files = [],
+                file, i;
+
+            for (i = 0; i < items.length; i++)
+            {
+                if (items[i].kind == 'file')
+                {
+                    file = items[i].getAsFile();
+                    files.push(file);
+                }
+            }
+
+            if (files.length > 0)
+            {
+                ErrorService.confirm(
+                {
+                    type: 'FILES_CLIPBOARD_PASTE',
+                    files: files
+                }).then(function()
+                {
+                    $scope.draftMessage.files = files;
+                    $scope.draftMessage.isMedia = true;
+                });
+            }
+        }
+
         function onKeyDown(e)
         {
             if (e.keyCode == 9 && !e.shiftKey && !e.ctrlKey && !e.metaKey && !$modalStack.getTop())
@@ -169,8 +241,10 @@ emojiApp.directive('myForm', ['$http', '$interpolate', function($http, $interpol
             }
         }
         $(document).on('keydown', onKeyDown);
+        $(document).on('paste', onPasteEvent);
 
         var sendAwaiting = false;
+
         function focusField()
         {
             onContentLoaded(function()

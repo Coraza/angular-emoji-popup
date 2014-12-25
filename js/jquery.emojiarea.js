@@ -26,9 +26,7 @@
 	var TAGS_BLOCK = [ 'p', 'div', 'pre', 'form' ];
 	var KEY_ESC = 27;
 	var KEY_TAB = 9;
-	var Config = {};
-	Config.Mobile = false;
-
+	
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 	/*
@@ -497,10 +495,11 @@
 					var alt = node.getAttribute('alt') || '';
 					if (alt) {
 						var code = alt.substring(1, alt.length - 1);
-						var smileyCode = Config.map[code];
+						//var smileyCode = Config.map[code];
 
-						if (smileyCode)
-							line.push(smileyCode);
+						//if (smileyCode)
+							line.push(code);
+
 					}
 					return;
 				} else if (tagName === 'br') {
@@ -509,7 +508,7 @@
 
 				var children = node.childNodes;
 				for (var i = 0; i < children.length; i++) {
-					// sanitizeNode(children[i]);
+					 sanitizeNode(children[i]);
 				}
 
 				if (isBlock && line.length)

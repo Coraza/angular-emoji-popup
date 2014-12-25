@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html ng-app="emojiApp">
 
 <head>
@@ -5,6 +6,7 @@
     <link type="text/stylesheet" rel="stylesheet" href="css/nanoscroller.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/emoji.css" />
     <link type="text/stylesheet" rel="stylesheet" href="css/style.css" />
+     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 </head>
 
 <body ng-controller="emojiController">
@@ -12,8 +14,8 @@
 
 
     <div class="myform">
-        <div my-form>
-            <textarea id="messageInput" ng-enter="replyToUser()" ng-model="messagetext" placeholder="Write a message..." class="ng-untouched ng-valid ng-dirty ng-valid-parse" style="display: none;"></textarea>
+        <div my-form emoji-message="emojiMessage">
+            <textarea id="messageInput" ng-enter="replyToUser()" ng-model="emojiMessage.messagetext" placeholder="Write a message..."></textarea>
 
 
             <div style="margin-right:10px;margin-top:5px;" class="im_emoji_btn" id="emojibtn" style="cursor:pointer">
@@ -23,12 +25,12 @@
 
         <div style="text-align:left;height:50px;width:500px"> String with Colons: </div>
         <div>
-            <div class="form-control" style="height:50px;width:500px" ng-bind-html="messagetext"></div>
+            <div class="form-control" style="height:50px;width:500px" ng-bind="emojiMessage.messagetext"></div>
         </div>
 
         <div> String with UTF Chars: (Will not display fine in input box) </div>
         <div>
-            <input class="form-control" ng-model="messagetext"> </div>
+            <input class="form-control" ng-model="emojiMessage.messagetext"> </div>
 
     </div>
 
@@ -36,15 +38,17 @@
 
 
     <script type="text/javascript" src="js/angular.min.js"></script>
-        <script type="text/javascript" src="js/angular-sanitize.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-
-    <script type="text/javascript" src="js/emoji.js"></script>
-    <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
-
+    <script type="text/javascript" src="js/angular-sanitize.js"></script>
+   
 
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
+     <script type="text/javascript" src="js/jquery.emojiarea.js"></script>
+    <script type="text/javascript" src="js/emoji.js"></script>
+   
+
+
+
 
     <script type="text/javascript" src="js/emojiController.js"></script>
     <script type="text/javascript" src="js/emojiDirectives.js"></script>

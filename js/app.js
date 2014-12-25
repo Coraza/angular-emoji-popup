@@ -2,11 +2,9 @@
 
 var emojiApp = angular.module("emojiApp", ['ngSanitize']);
 
-emojiApp.config(function(ConfigProvider)
+emojiApp.config(function()
 {
 
-    var Config = ConfigProvider.$get();
-    
     var icons = {},
         reverseIcons = {},
         i, j, hex, name, dataItem, row, column, totalColumns;
