@@ -69,32 +69,3 @@ emojiApp.directive('contenteditable', [ '$sce', function($sce) {
   };
 } ]);
 
-
-    
-function checkDragEvent(e) {
-  if (!e || e.target && (e.target.tagName == 'IMG' || e.target.tagName == 'A')) return false;
-  if (e.dataTransfer && e.dataTransfer.types) {
-    for (var i = 0; i < e.dataTransfer.types.length; i++) {
-      if (e.dataTransfer.types[i] == 'Files') {
-        return true;
-      }
-    }
-  } else {
-    return true;
-  }
-
-  return false;
-}
-
-function cancelEvent (event) {
-  event = event || window.event;
-  if (event) {
-    event = event.originalEvent || event;
-
-    if (event.stopPropagation) event.stopPropagation();
-    if (event.preventDefault) event.preventDefault();
-  }
-
-  return false;
-}
-
