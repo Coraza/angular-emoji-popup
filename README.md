@@ -24,15 +24,9 @@ This module contain various filters to encode and decode emojis in the above for
 
 ##Installation
 
-Include the JS files
-
 ```html
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/emoji.min.js"></script>
-```
-
-Include the CSS file
-```html
 <link type="text/stylesheet" rel="stylesheet" href="css/emoji.min.css" />
 ```
 
@@ -62,7 +56,7 @@ This directive adds a contenteditable div and hides the textarea. Anything typed
 Make sure to initialize `emojiMessage` inside your controller
 
 ```js
-emojiApp.controller('emojiController', ['$scope', '$log', function($scope, $log) {
+emojiApp.controller('emojiController', ['$scope', function($scope) {
 
 	$scope.emojiMessage={};
 }]);
