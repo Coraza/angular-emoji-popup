@@ -1,0 +1,396 @@
+
+[1m   Gruntfile.js[22m
+      3 |[90m    var appConfig = grunt.file.readJSON('package.json') ||[39m
+             ^ Missing "use strict" statement.
+      1 |[90mmodule.exports = function(grunt)[39m
+         ^ 'module' is not defined.
+      3 |[90m    var appConfig = grunt.file.readJSON('package.json') ||[39m
+                 ^ 'appConfig' is defined but never used.
+[1m   js/app.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+     44 |[90m        return; // do nothing if no ng-model[39m
+                 ^ Expected '{' and instead saw 'return'.
+     63 |[90m        if (attrs.stripBr && html == '<br>') {[39m
+                                             ^ Expected '===' and instead saw '=='.
+     14 |[90m    for (j = 0; j < Config.EmojiCategories.length; j++)[39m
+                             ^ 'Config' is not defined.
+     16 |[90m        totalColumns = Config.EmojiCategorySpritesheetDimens[j][1];[39m
+                                ^ 'Config' is not defined.
+     17 |[90m        for (i = 0; i < Config.EmojiCategories[j].length; i++)[39m
+                                 ^ 'Config' is not defined.
+     19 |[90m            dataItem = Config.Emoji[Config.EmojiCategories[j][i]];[39m
+                                ^ 'Config' is not defined.
+     19 |[90m            dataItem = Config.Emoji[Config.EmojiCategories[j][i]];[39m
+                                             ^ 'Config' is not defined.
+     30 |[90m    $.emojiarea.spritesheetPath = 'img/emojisprite_!.png';[39m
+             ^ '$' is not defined.
+     31 |[90m    $.emojiarea.spritesheetDimens = Config.EmojiCategorySpritesheetDimens;[39m
+             ^ '$' is not defined.
+     31 |[90m    $.emojiarea.spritesheetDimens = Config.EmojiCategorySpritesheetDimens;[39m
+                                             ^ 'Config' is not defined.
+     32 |[90m    $.emojiarea.iconSize = 20;[39m
+             ^ '$' is not defined.
+     33 |[90m    $.emojiarea.icons = icons;[39m
+             ^ '$' is not defined.
+     34 |[90m    $.emojiarea.reverseIcons = reverseIcons;[39m
+             ^ '$' is not defined.
+     12 |[90m        i, j, hex, name, dataItem, row, column, totalColumns;[39m
+                       ^ 'hex' is defined but never used.
+     38 |[90memojiApp.directive('contenteditable', [ '$sce', function($sce) {[39m
+                                                                  ^ '$sce' is defined but never used.
+[1m   js/config.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+    849 |[90m}[39m
+          ^ Missing semicolon.
+   3467 |[90m        return;[39m
+                 ^ Expected '{' and instead saw 'return'.
+   3477 |[90m        var emoticon = i.replace(/\&/g, '&amp;').replace(/\</g, '&lt;')[39m
+                                                                  ^ Unexpected escaped character '<' in regular expression.
+   3481 |[90m            continue;[39m
+                     ^ Expected '{' and instead saw 'continue'.
+   3473 |[90m    for (var i in Config.emoticons_data)[39m
+             ^ The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.
+   3492 |[90m        return;[39m
+                 ^ Expected '{' and instead saw 'return'.
+   3496 |[90m    for (var i in Config.data)[39m
+             ^ The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.
+   3507 |[90m        return;[39m
+                 ^ Expected '{' and instead saw 'return'.
+   3524 |[90m    for (var i in Config.emoji_data)[39m
+             ^ The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.
+   3480 |[90m        if (!Config.map.colons[emoji.emoticons_data[i]])[39m
+                                        ^ 'emoji' is not defined.
+   3500 |[90m            Config.map.colons[emoji.data[i][3][j]] = i;[39m
+                                       ^ 'emoji' is not defined.
+   3461 |[90mvar a = [];[39m
+             ^ 'a' is defined but never used.
+[1m   js/emojiController.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+     11 |[90m    }[39m
+              ^ Missing semicolon.
+      3 |[90memojiApp.controller('emojiController', ['$scope', '$log', function($scope, $log) {[39m
+         ^ 'emojiApp' is not defined.
+      3 |[90memojiApp.controller('emojiController', ['$scope', '$log', function($scope, $log) {[39m
+                                                                                    ^ '$log' is defined but never used.
+[1m   js/emojiDirectives.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+     81 |[90m                if (e.keyCode == 13)[39m
+                                         ^ Expected '===' and instead saw '=='.
+    119 |[90m        };[39m
+                  ^ Unnecessary semicolon.
+    150 |[90m            if (height != newHeight)[39m
+                                  ^ Expected '!==' and instead saw '!='.
+    155 |[90m        };[39m
+                  ^ Unnecessary semicolon.
+    164 |[90m            if (src.substr(0, 5) == 'data:')[39m
+                                            ^ Expected '===' and instead saw '=='.
+    179 |[90m                })[39m
+                           ^ Missing semicolon.
+    189 |[90m        };[39m
+                  ^ Unnecessary semicolon.
+    202 |[90m                if (items[i].kind == 'file')[39m
+                                             ^ Expected '===' and instead saw '=='.
+    225 |[90m            if (e.keyCode == 9 && !e.shiftKey && !e.ctrlKey && !e.metaKey && !$modalStack.getTop())[39m
+                                     ^ Expected '===' and instead saw '=='.
+    249 |[90m            $(submitBtn).off('mousedown')[39m
+                                                  ^ Missing semicolon.
+      4 |[90memojiApp.directive('emojiForm', ['$timeout', '$http', '$interpolate','$compile', function($timeout, $http, $interpolate, $compile)[39m
+         ^ 'emojiApp' is not defined.
+     16 |[90m        var messageField = $('textarea', element)[0],[39m
+                                    ^ '$' is not defined.
+     17 |[90m            fileSelects = $('input', element),[39m
+                                   ^ '$' is not defined.
+     18 |[90m            emojiButton = $('#emojibtn', element)[0],[39m
+                                   ^ '$' is not defined.
+     20 |[90m            emojiArea = $(messageField).emojiarea([39m
+                                 ^ '$' is not defined.
+     25 |[90m            emojiMenu = $('.emoji-menu', element)[0],[39m
+                                 ^ '$' is not defined.
+     26 |[90m            richTextarea = $([39m
+                                    ^ '$' is not defined.
+     29 |[90m            var s = $compile($("#messageDiv"));[39m
+                                      ^ '$' is not defined.
+     30 |[90m            $("#messageDiv").replaceWith(s($scope));[39m
+                     ^ '$' is not defined.
+     36 |[90m            $(richTextarea).addClass('form-control');[39m
+                     ^ '$' is not defined.
+     37 |[90m            $(richTextarea)[39m
+                     ^ '$' is not defined.
+     41 |[90m                        $(messageField).attr([39m
+                                 ^ '$' is not defined.
+     46 |[90m            $(richTextarea)[39m
+                     ^ '$' is not defined.
+     72 |[90m        $(editorElement).on([39m
+                 ^ '$' is not defined.
+    100 |[90m                        return cancelEvent(e);[39m
+                                        ^ 'cancelEvent' is not defined.
+    127 |[90m                var html = $('<div>').text([39m
+                                    ^ '$' is not defined.
+    130 |[90m                $(richTextarea).html(html);[39m
+                         ^ '$' is not defined.
+    131 |[90m                lastLength = html.length;[39m
+                         ^ 'lastLength' is not defined.
+    140 |[90m                $(richTextarea).trigger('change');[39m
+                         ^ '$' is not defined.
+    167 |[90m                var blob = dataUrlToBlob(src);[39m
+                                    ^ 'dataUrlToBlob' is not defined.
+    168 |[90m                ErrorService.confirm([39m
+                         ^ 'ErrorService' is not defined.
+    176 |[90m                setZeroTimeout(function()[39m
+                         ^ 'setZeroTimeout' is not defined.
+    211 |[90m                ErrorService.confirm([39m
+                         ^ 'ErrorService' is not defined.
+    225 |[90m            if (e.keyCode == 9 && !e.shiftKey && !e.ctrlKey && !e.metaKey && !$modalStack.getTop())[39m
+                                                                                       ^ '$modalStack' is not defined.
+    228 |[90m                return cancelEvent(e);[39m
+                                ^ 'cancelEvent' is not defined.
+    231 |[90m        $(document).on('keydown', onKeyDown);[39m
+                 ^ '$' is not defined.
+    232 |[90m        $(document).on('paste', onPasteEvent);[39m
+                 ^ '$' is not defined.
+    238 |[90m            onContentLoaded(function()[39m
+                     ^ 'onContentLoaded' is not defined.
+    247 |[90m            $(document).off('paste', onPasteEvent);[39m
+                     ^ '$' is not defined.
+    248 |[90m            $(document).off('keydown', onKeyDown);[39m
+                     ^ '$' is not defined.
+    249 |[90m            $(submitBtn).off('mousedown')[39m
+                     ^ '$' is not defined.
+    249 |[90m            $(submitBtn).off('mousedown')[39m
+                       ^ 'submitBtn' is not defined.
+    253 |[90m                $(richTextarea).off('DOMNodeInserted keyup',[39m
+                         ^ '$' is not defined.
+    256 |[90m            $(editorElement).off('keydown');[39m
+                     ^ '$' is not defined.
+     20 |[90m            emojiArea = $(messageField).emojiarea([39m
+                     ^ 'emojiArea' is defined but never used.
+     25 |[90m            emojiMenu = $('.emoji-menu', element)[0],[39m
+                     ^ 'emojiMenu' is defined but never used.
+    121 |[90m        function updateRichTextarea()[39m
+                          ^ 'updateRichTextarea' is defined but never used.
+    236 |[90m        function focusField()[39m
+                          ^ 'focusField' is defined but never used.
+     14 |[90m    function link($scope, element, attrs)[39m
+                                            ^ 'attrs' is defined but never used.
+[31m>> [39mToo many errors. (5% scanned).
+[1m   js/emojiFilters.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+      7 |[90m            return "";[39m
+                     ^ Expected '{' and instead saw 'return'.
+     10 |[90m            Config.init_unified();[39m
+                     ^ Expected '{' and instead saw 'Config'.
+     20 |[90m                return "";[39m
+                         ^ Expected '{' and instead saw 'return'.
+     31 |[90m            return "";[39m
+                     ^ Expected '{' and instead saw 'return'.
+     34 |[90m            Config.init_unified();[39m
+                     ^ Expected '{' and instead saw 'Config'.
+     46 |[90m                return "";[39m
+                         ^ Expected '{' and instead saw 'return'.
+     58 |[90m            return "";[39m
+                     ^ Expected '{' and instead saw 'return'.
+     61 |[90m            Config.init_unified();[39m
+                     ^ Expected '{' and instead saw 'Config'.
+     71 |[90m                return "";[39m
+                         ^ Expected '{' and instead saw 'return'.
+      2 |[90memojiApp.filter('colonToCode', function() {[39m
+         ^ 'emojiApp' is not defined.
+      9 |[90m        if(!Config.rx_colons)[39m
+                     ^ 'Config' is not defined.
+     10 |[90m            Config.init_unified();[39m
+                     ^ 'Config' is not defined.
+     12 |[90m         return input.replace(Config.rx_colons, function(m)[39m
+                                       ^ 'Config' is not defined.
+     14 |[90m            var val = Config.mapcolon[m];[39m
+                               ^ 'Config' is not defined.
+     26 |[90memojiApp.filter('codeToSmiley', function() {[39m
+         ^ 'emojiApp' is not defined.
+     33 |[90m        if(!Config.rx_codes)[39m
+                     ^ 'Config' is not defined.
+     34 |[90m            Config.init_unified();[39m
+                     ^ 'Config' is not defined.
+     36 |[90m         return input.replace(Config.rx_codes, function(m)[39m
+                                       ^ 'Config' is not defined.
+     38 |[90m            var val = Config.reversemap[m];[39m
+                               ^ 'Config' is not defined.
+     42 |[90m                var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);[39m
+                                    ^ '$' is not defined.
+     42 |[90m                var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);[39m
+                                                           ^ '$' is not defined.
+     53 |[90memojiApp.filter('colonToSmiley', function() {[39m
+         ^ 'emojiApp' is not defined.
+     60 |[90m        if(!Config.rx_colons)[39m
+                     ^ 'Config' is not defined.
+     61 |[90m            Config.init_unified();[39m
+                     ^ 'Config' is not defined.
+     63 |[90m         return input.replace(Config.rx_colons, function(m)[39m
+                                       ^ 'Config' is not defined.
+     67 |[90m                var $img = $.emojiarea.createIcon($.emojiarea.icons[m]);[39m
+                                    ^ '$' is not defined.
+     67 |[90m                var $img = $.emojiarea.createIcon($.emojiarea.icons[m]);[39m
+                                                           ^ '$' is not defined.
+[1m   js/jquery.emojiarea.js[22m
+     24 |[90m    var ELEMENT_NODE = 1;[39m
+             ^ Missing "use strict" statement.
+     58 |[90m                            && options.wysiwyg !== false) {[39m
+                                     ^ Bad line breaking before '&&'.
+    129 |[90m            }[39m
+                      ^ Missing semicolon.
+    138 |[90m            }[39m
+                      ^ Missing semicolon.
+    145 |[90m        if (typeof el.selectionStart != 'undefined'[39m
+                                                ^ Expected '!==' and instead saw '!='.
+    146 |[90m                && typeof el.selectionEnd != 'undefined') {[39m
+                         ^ Bad line breaking before '&&'.
+    146 |[90m                && typeof el.selectionEnd != 'undefined') {[39m
+                                                     ^ Expected '!==' and instead saw '!='.
+    150 |[90m                    + val.substring(el.selectionEnd);[39m
+                             ^ Bad line breaking before '+'.
+    152 |[90m        } else if (typeof document.selection != 'undefined'[39m
+                                                        ^ Expected '!==' and instead saw '!='.
+    153 |[90m                && typeof document.selection.createRange != 'undefined') {[39m
+                         ^ Bad line breaking before '&&'.
+    153 |[90m                && typeof document.selection.createRange != 'undefined') {[39m
+                                                                    ^ Expected '!==' and instead saw '!='.
+    196 |[90m            if (pos != -1) {[39m
+                               ^ Expected '!==' and instead saw '!='.
+    207 |[90m        })[39m
+                   ^ Missing semicolon.
+    264 |[90m        var iconSize = menu && Config.Mobile ? 26 : $.emojiarea.iconSize[39m
+                                                                                 ^ Missing semicolon.
+    274 |[90m                + xoffset + 'px ' + yoffset + 'px no-repeat;';[39m
+                         ^ Bad line breaking before '+'.
+    276 |[90m                + 'px;';[39m
+                         ^ Bad line breaking before '+'.
+    278 |[90m                + style + '" alt="' + util.htmlEntities(name) + '">';[39m
+                         ^ Bad line breaking before '+'.
+    304 |[90m            return;[39m
+                     ^ Expected '{' and instead saw 'return'.
+    411 |[90m                && cData.items || [], i;[39m
+                         ^ Bad line breaking before '&&'.
+    413 |[90m            if (items[i].kind == 'file') {[39m
+                                         ^ Expected '===' and instead saw '=='.
+    493 |[90m                    flush();[39m
+                             ^ Expected '{' and instead saw 'flush'.
+    516 |[90m                    flush();[39m
+                             ^ Expected '{' and instead saw 'flush'.
+    526 |[90m            flush();[39m
+                     ^ Expected '{' and instead saw 'flush'.
+    562 |[90m                        + '<td><a class="emoji-menu-tab icon-recent" ></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    563 |[90m                        + '<td><a class="emoji-menu-tab icon-smile" ></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    564 |[90m                        + '<td><a class="emoji-menu-tab icon-flower"></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    565 |[90m                        + '<td><a class="emoji-menu-tab icon-bell"></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    566 |[90m                        + '<td><a class="emoji-menu-tab icon-car"></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    567 |[90m                        + '<td><a class="emoji-menu-tab icon-grid"></a></td>'[39m
+                                 ^ Bad line breaking before '+'.
+    568 |[90m                        + '</tr></table>').appendTo(this.$itemsTailWrap);[39m
+                                 ^ Bad line breaking before '+'.
+    611 |[90m            while (target && target != window) {[39m
+                                               ^ Expected '!==' and instead saw '!='.
+    613 |[90m                if (target == self.$menu[0] || self.emojiarea[39m
+                                      ^ Expected '===' and instead saw '=='.
+    614 |[90m                        && target == self.emojiarea.$button[0]) {[39m
+                                 ^ Bad line breaking before '&&'.
+    614 |[90m                        && target == self.emojiarea.$button[0]) {[39m
+                                             ^ Expected '===' and instead saw '=='.
+    624 |[90m                self.reposition();[39m
+                         ^ Expected '{' and instead saw 'self'.
+    727 |[90m        }[39m
+                  ^ Missing semicolon.
+    737 |[90m                        && options[key][0] === (category - 1)) {[39m
+                                 ^ Bad line breaking before '&&'.
+    739 |[90m                            + util.htmlEntities(key) + '">'[39m
+                                     ^ Bad line breaking before '+'.
+    740 |[90m                            + EmojiArea.createIcon(options[key], true)[39m
+                                     ^ Bad line breaking before '+'.
+    741 |[90m                            + '<span class="label">' + util.htmlEntities(key)[39m
+                                     ^ Bad line breaking before '+'.
+    742 |[90m                            + '</span></a>');[39m
+                                     ^ Bad line breaking before '+'.
+    751 |[90m                    key = curEmojis[i][39m
+                                               ^ Missing semicolon.
+    754 |[90m                                + util.htmlEntities(key) + '">'[39m
+                                         ^ Bad line breaking before '+'.
+    755 |[90m                                + EmojiArea.createIcon(options[key], true)[39m
+                                         ^ Bad line breaking before '+'.
+    756 |[90m                                + '<span class="label">'[39m
+                                         ^ Bad line breaking before '+'.
+    757 |[90m                                + util.htmlEntities(key) + '</span></a>');[39m
+                                         ^ Bad line breaking before '+'.
+    794 |[90m            return this.hide();[39m
+                     ^ Expected '{' and instead saw 'return'.
+    189 |[90m        ConfigStorage.get('emojis_recent', function(curEmojis) {[39m
+                 ^ 'ConfigStorage' is not defined.
+    204 |[90m            ConfigStorage.set({[39m
+                     ^ 'ConfigStorage' is not defined.
+    264 |[90m        var iconSize = menu && Config.Mobile ? 26 : $.emojiarea.iconSize[39m
+                                        ^ 'Config' is not defined.
+[31m>> [39mToo many errors. (32% scanned).
+[1m   js/nanoscroller.js[22m
+    354 |[90m      BROWSER_SCROLLBAR_WIDTH || (BROWSER_SCROLLBAR_WIDTH = getBrowserScrollbarWidth());[39m
+                                                                                               ^ Expected an assignment or function call and instead saw an expression.
+    363 |[90m      if (this.options.iOSNativeScrolling && (this.el.style.WebkitOverflowScrolling != null || navigator.userAgent.match(/mobi.+Gecko/i))) {[39m
+                                                                                               ^ Expected '!==' and instead saw '!='.
+    544 |[90m            if (e == null) {[39m
+                             ^ Expected '===' and instead saw '=='.
+    567 |[90m            if (e == null) {[39m
+                             ^ Expected '===' and instead saw '=='.
+    642 |[90m      paneClass = options.paneClass, sliderClass = options.sliderClass, contentClass = options.contentClass;[39m
+                                                                                                        ^ Expected an assignment or function call and instead saw an expression.
+    660 |[90m      if (cssRule != null) {[39m
+                             ^ Expected '!==' and instead saw '!='.
+    722 |[90m      } else if ((this.options.sliderMaxHeight != null) && sliderHeight > this.options.sliderMaxHeight) {[39m
+                                                          ^ Expected '!==' and instead saw '!='.
+    932 |[90m        if (settings.scrollBottom != null) {[39m
+                                             ^ Expected '!==' and instead saw '!='.
+    935 |[90m        if (settings.scrollTop != null) {[39m
+                                          ^ Expected '!==' and instead saw '!='.
+    964 |[90m})(jQuery, window, document);[39m
+            ^ 'jQuery' is not defined.
+    513 |[90m          return function(e) {[39m
+                                   ^ 'e' is defined but never used.
+    522 |[90m          return function(e) {[39m
+                                   ^ 'e' is defined but never used.
+[1m   js/util.js[22m
+      1 |[90m'use strict';[39m
+         ^ Use the function form of "use strict".
+      4 |[90m  if (!e || e.target && (e.target.tagName == 'IMG' || e.target.tagName == 'A')) return false;[39m
+                                                     ^ Expected '===' and instead saw '=='.
+      4 |[90m  if (!e || e.target && (e.target.tagName == 'IMG' || e.target.tagName == 'A')) return false;[39m
+                                                                                  ^ Expected '===' and instead saw '=='.
+      4 |[90m  if (!e || e.target && (e.target.tagName == 'IMG' || e.target.tagName == 'A')) return false;[39m
+                                                                                         ^ Expected '{' and instead saw 'return'.
+      7 |[90m      if (e.dataTransfer.types[i] == 'Files') {[39m
+                                             ^ Expected '===' and instead saw '=='.
+     23 |[90m    if (event.stopPropagation) event.stopPropagation();[39m
+                                        ^ Expected '{' and instead saw 'event'.
+     24 |[90m    if (event.preventDefault) event.preventDefault();[39m
+                                       ^ Expected '{' and instead saw 'event'.
+     67 |[90m            single = keys.length == 1,[39m
+                                            ^ Expected '===' and instead saw '=='.
+     76 |[90m            if (key.substr(0, 3) != 'xt_' && cache[key] !== undefined)[39m
+                                            ^ Expected '!==' and instead saw '!='.
+    129 |[90m    };[39m
+              ^ Unnecessary semicolon.
+    173 |[90m    };[39m
+              ^ Unnecessary semicolon.
+    210 |[90m    };[39m
+              ^ Unnecessary semicolon.
+    221 |[90m})(this);[39m
+            ^ Possible strict violation.
+      3 |[90mfunction checkDragEvent(e) {[39m
+                  ^ 'checkDragEvent' is defined but never used.
+     18 |[90mfunction cancelEvent (event) {[39m
+                  ^ 'cancelEvent' is defined but never used.
+
+[31m>> [39m193 errors in 9 files
