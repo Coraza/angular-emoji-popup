@@ -40,8 +40,8 @@ angular.module("myApp", ['emojiApp']);
 
 The module consists of following components:
 
-* `emojiForm` Directive - Enclose this directive with a textarea and a button named `emojibtn`.
-This directive adds a contenteditable div and hides the textarea. Anything typed into this conteteditable div is synced with the textarea. It also up the button to show an Emoji popup. 
+* `emojiForm` - Enclose this directive with a `textarea` and a `button` named `emojibtn`.
+This directive adds a `contenteditable` `div` and hides the `textarea`. Anything typed into this `contebteditable` `div` is synced with the `textarea`. It also hooks up the button to show an Emoji popup. 
 
 ```html
 <div emoji-form emoji-message="emojiMessage">
@@ -93,8 +93,9 @@ For decoding the message string containing either colon style emojis or UTF-8 ch
 
 Much of the functionality of this module is driven by the map contained in `config.js` file. It contains a mapping of Emoji UTF-8 character and its colon representation. If you encounter any bugs in this mapping, please raise an issue or send a pull request.
 
-## Using MySQL for storage
 <a name="db"></a>
+## Using MySQL for storage
+
 The following text is taken verbatim from [https://github.com/iamcal/js-emoji](https://github.com/iamcal/js-emoji)
 
 > Some special care may be needed to store emoji in your database. While some characters (e.g. Cloud, U+2601) are

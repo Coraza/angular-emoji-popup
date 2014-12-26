@@ -2,4 +2,4 @@ _site/
 .sass-cache/
 .DS_STORE
 node_modules
-jshint.logs
+jshint.log
