@@ -1,7 +1,7 @@
 {
   "name": "angular-emoji-popup",
   "version": "1.0.0",
-  "description": "Angular Emoji Popup ",
+  "description": "Angular Emoji",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
