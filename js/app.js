@@ -2,7 +2,7 @@
 
 var emojiApp = angular.module("emojiApp", ['ngSanitize']);
 
-emojiApp.config(function($sceProvider)
+emojiApp.config(['$sceProvider', function($sceProvider)
 {
 
   $sceProvider.enabled(false);
@@ -33,7 +33,7 @@ emojiApp.config(function($sceProvider)
     $.emojiarea.icons = icons;
     $.emojiarea.reverseIcons = reverseIcons;
 
-});
+}]);
 
 emojiApp.directive('contenteditable', [ '$sce', function($sce) {
   return {

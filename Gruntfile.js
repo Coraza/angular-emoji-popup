@@ -15,7 +15,7 @@ module.exports = function(grunt)
             {
                 files:
                 {
-                    'build/emoji.min.js': ['js/app.js', 'js/config.js', 'js/emojiDirectives.js', 'js/emojiFilters.js', 'js/util.js', 'js/jquery.emojiarea.js', 'js/nanoscroller.js']
+                    'dist/emoji.min.js': ['js/app.js', 'js/emojiDirectives.js', 'js/emojiFilters.js', 'js/util.js', 'js/jquery.emojiarea.js', 'js/nanoscroller.js']
                 }
             }
         },
@@ -41,7 +41,7 @@ module.exports = function(grunt)
                 },
                 files:
                 {
-                    'build/emoji.min.css': ['css/style.css']
+                    'dist/emoji.min.css': ['css/nanoscroller.css','css/style.css']
                 }
             }
         }
@@ -51,6 +51,9 @@ module.exports = function(grunt)
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+     grunt.loadNpmTasks('grunt-contrib-copy');
+     grunt.loadNpmTasks('grunt-contrib-watch');
+     grunt.loadNpmTasks('grunt-banner');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint', 'cssmin']);
