@@ -4,3 +4,4 @@ _site/
 node_modules
 build
 dist
+jshint.log
