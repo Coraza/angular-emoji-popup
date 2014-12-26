@@ -20,7 +20,7 @@ module.exports = function(grunt)
                 },
                 files:
                 {
-                    src: ['dist/js/*.js', 'dist/css/*.css']
+                    src: ['dist/js/*.js', 'dist/css/*.css', 'src/css/*.css', 'src/js/*.js']
                 }
             }
         },
@@ -48,6 +48,26 @@ module.exports = function(grunt)
             {
                 src: 'img/*',
                 dest: 'dist/',
+            },
+
+            src:
+            {
+                files: [
+                {
+                    src: 'img/*',
+                    dest: 'src/'
+                },
+                {
+                    src: 'css/*.css',
+                    dest: 'src/'
+                },
+  {
+                    src: 'js/*.js',
+                    dest: 'src/'
+                },
+
+
+                ]
             },
         },
 
@@ -93,11 +113,10 @@ module.exports = function(grunt)
                     archive: 'emoji.zip'
                 },
                 files: [
-                    {
-                        src: ['dist/**'],
-                        dest: '/',
-                    }
-                ]
+                {
+                    src: ['dist/**'],
+                    dest: '/',
+                }]
             }
         }
     });
@@ -114,7 +133,9 @@ module.exports = function(grunt)
 
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'jshint', 'cssmin', 'usebanner', 'copy', 'compress']);
+    grunt.registerTask('default', ['uglify', 'jshint', 'cssmin', 'usebanner', 'copy:main', 'compress']);
+    grunt.registerTask('src', ['copy:src', 'usebanner']);
     grunt.registerTask('serve', ['connect', 'watch']);
+
 
 };
