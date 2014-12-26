@@ -133,7 +133,7 @@ module.exports = function(grunt)
 
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'jshint', 'cssmin', 'usebanner', 'copy:main', 'compress']);
+    grunt.registerTask('default', ['uglify', 'jshint', 'cssmin', 'usebanner', 'copy:main']);
     grunt.registerTask('src', ['copy:src', 'usebanner']);
     grunt.registerTask('serve', ['connect', 'watch']);
 
