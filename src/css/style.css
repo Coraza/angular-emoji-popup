@@ -1,0 +1,60 @@
+/*! Angular Emoji 1.0.0 2014-12-26 */
+
+body
+{
+  background: #222222 url("../img/black_linen_v2.png")  repeat;
+  color: #aaaaaa;
+}
+
+h1
+{
+  color:white;
+}
+
+.form-control:focus {
+border-color: #66afe9;
+outline: 0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+
+.emojiForm
+{
+    top: 50%;
+    width:100%;
+}
+
+.form-control,pre
+{
+  background-color:black;
+  color:white;
+}
+
+ul li, .radio
+{
+  display:inline;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+pre
+{
+  background-color: #555555;
+  margin-top:20px;
+  border:none;
+}
+
+.emoji-wysiwyg-editor, .userinput
+{
+  background-color: white;
+  color:black;
+  overflow:auto;
+}
+
+.emoji-wysiwyg-editor
+{
+  height: 52px;
+}
