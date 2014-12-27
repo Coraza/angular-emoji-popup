@@ -24,7 +24,13 @@ This module contain various filters to encode and decode emojis in the above for
 
 ##Installation
 
+Only dependencies are `Jquery`, `AngularJs` and `angular-Sanitize` module.
+
 ```html
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.7/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.7/angular-sanitize.min.js"></script>
+
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/emoji.min.js"></script>
 <link type="text/stylesheet" rel="stylesheet" href="css/emoji.min.css" />
@@ -33,7 +39,7 @@ This module contain various filters to encode and decode emojis in the above for
 Inject the `emojiApp` module to your app
 
 ```js
-angular.module("myApp", ['emojiApp']);
+angular.module("myApp", ['ngSanitize', 'emojiApp']);
 ```
 
 ##Usage

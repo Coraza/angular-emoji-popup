@@ -46,25 +46,34 @@ module.exports = function(grunt)
         {
             main:
             {
-                src: 'img/*',
-                dest: 'dist/',
+                files: [
+                    {
+                        src: 'img/*',
+                        dest: 'dist/'
+                    },
+                    {
+                        src: 'js/config.js',
+                        dest: 'dist/'
+                    }
+
+                ]
             },
 
             src:
             {
                 files: [
-                {
-                    src: 'img/*',
-                    dest: 'src/'
-                },
-                {
-                    src: 'css/*.css',
-                    dest: 'src/'
-                },
-  {
-                    src: 'js/*.js',
-                    dest: 'src/'
-                },
+                    {
+                        src: 'img/*',
+                        dest: 'src/'
+                    },
+                    {
+                        src: 'css/*.css',
+                        dest: 'src/'
+                    },
+                    {
+                        src: 'js/*.js',
+                        dest: 'src/'
+                    },
 
 
                 ]
@@ -99,7 +108,7 @@ module.exports = function(grunt)
             {
                 files:
                 {
-                    'dist/css/emoji.min.css': ['css/nanoscroller.css', 'css/style.css']
+                    'dist/css/emoji.min.css': ['css/nanoscroller.css', 'css/emoji.css']
                 }
             }
         },
