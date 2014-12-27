@@ -1,4 +1,4 @@
-/*! Angular Emoji 1.0.0 2014-12-26 */
+/*! Angular Emoji 1.0.0 2014-12-27 */
 
 'use strict';
 
@@ -36,13 +36,9 @@ emojiApp.directive('emojiForm', ['$timeout', '$http', '$interpolate','$compile',
         {
             editorElement = richTextarea;
             $(richTextarea).addClass('form-control');
-            $(richTextarea)
-                .attr(
-                    'placeholder',
-                    $interpolate(
-                        $(messageField).attr(
-                            'placeholder'))(
-                        $scope));
+
+            if($(messageField).attr('placeholder'))
+                $(richTextarea).attr('placeholder',$interpolate($(messageField).attr('placeholder'))($scope));
 
             var updatePromise;
             $(richTextarea)

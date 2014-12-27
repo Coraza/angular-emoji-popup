@@ -1,4 +1,4 @@
-/*! Angular Emoji 1.0.0 2014-12-26 */
+/*! Angular Emoji 1.0.0 2014-12-27 */
 
 /*! nanoScrollerJS - v0.8.4 - 2014
 * http://jamesflorentino.github.com/nanoScrollerJS/

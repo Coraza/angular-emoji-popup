@@ -1,5 +1,7 @@
 /*! Angular Emoji 1.0.0 2014-12-27 */
 
+/*! Angular Emoji 1.0.0 2014-12-27 */
+
 'use strict';
 var Config = {};
 Config.Emoji = {
