@@ -1,0 +1,15 @@
+{
+  "name": "angular-emoji-popup",
+  "version": "0.0.0",
+  "homepage": "https://github.com/vlio20/angular-emoji-popup",
+  "description": "Angular based Emoji Popup along with filters for encoding/decoding emojis",
+  "main": ["dist/js/config.js", "dist/js/emoji.min.js", "dist/css/emoji.min.css"],
+  "keywords": [
+    "angular",
+    "emoji"
+  ],
+  "authors": [
+    "madhur"
+  ],
+  "license": "MIT"
+}
