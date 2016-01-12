@@ -18,6 +18,7 @@ emojiApp.directive('emojiForm', ['$timeout', '$http', '$interpolate','$compile',
         var messageField = $('textarea', element)[0],
             fileSelects = $('input', element),
             emojiButton = $('#emojibtn', element)[0],
+            submitBtn = $('#submitBtn', element)[0],
             editorElement = messageField,
             emojiArea = $(messageField).emojiarea(
             {
@@ -126,7 +127,7 @@ emojiApp.directive('emojiForm', ['$timeout', '$http', '$interpolate','$compile',
                     $scope.draftMessage.text || '').html();
                 html = html.replace(/\n/g, '<br/>');
                 $(richTextarea).html(html);
-                lastLength = html.length;
+                var lastLength = html.length;
                 updateHeight();
             }
         }
