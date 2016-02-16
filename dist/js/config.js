@@ -3458,6 +3458,7 @@ Config.inits = {};
 Config.map = {};
 
 Config.mapcolon = {};
+Config.mapemoticons = {};
 var a = [];
 Config.reversemap = {};
 
@@ -3492,6 +3493,7 @@ Config.init_colons = function()
         return;
     Config.inits.colons = 1;
     Config.rx_colons = new RegExp('\:[^\\s:]+\:', 'g');
+	Config.rx_emoticons = new RegExp('\:[^\\s:]+\:','g');
     Config.map.colons = {};
     for (var i in Config.data)
     {
@@ -3517,10 +3519,22 @@ Config.escape_rx = function(text)
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
+Config.escape_emoticons = function(text)
+{
+    return text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+};
+
 function buildMap()
 {
 
-    var colons = [],codes=[];
+    var colons = [],codes=[],emoticons=[];
+	for (var i in Config.smileys)
+	{
+		emoticons.push(Config.escape_emoticons(i));
+		Config.mapemoticons[i] = ":"+Config.smileys[i]+":";
+		Config.rx_emoticons = new RegExp('(' + emoticons.join('|') + ')', "g");
+	}
+	
     for (var i in Config.emoji_data)
     {
         for (var j = 0; j < Config.emoji_data[i][0].length; j++)
