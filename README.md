@@ -47,7 +47,7 @@ angular.module("myApp", ['ngSanitize', 'emojiApp']);
 The module consists of following components:
 
 * `emojiForm` - Enclose this directive with a `textarea` and a `button` named `emojibtn`.
-This directive adds a `contenteditable` `div` and hides the `textarea`. Anything typed into this `contebteditable` `div` is synced with the `textarea`. It also hooks up the button to show an Emoji popup. 
+This directive adds a `contenteditable` `div` and hides the `textarea`. Anything typed into this `contenteditable` `div` is synced with the `textarea`. It also hooks up the button to show an Emoji popup. 
 
 ```html
 <div emoji-form emoji-message="emojiMessage">
