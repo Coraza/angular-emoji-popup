@@ -1,3 +1,9 @@
+#Deprecated
+
+NOTE: I no longer actively mantain this repository. I've started using ReactJS and Angular 2 now. If you're still using Angular 1.x and need a emoji-popup component I'd encourage you to look at this fork of my original plugin: 
+
+https://github.com/one-signal/emoji-picker
+
 #Angular Emoji
 
 An angular module to serve multiple purpose:
