@@ -29,12 +29,12 @@ emojiApp.config(['$sceProvider', function($sceProvider)
         }
     }
 
-    $.emojiarea.spritesheetPath = 'img/emojisprite_!.png';
+    $.emojiarea.imagesPath = 'img/';
+    $.emojiarea.spritesheetPath = $.emojiarea.imagesPath + 'emojisprite_!.png';
     $.emojiarea.spritesheetDimens = Config.EmojiCategorySpritesheetDimens;
     $.emojiarea.iconSize = 20;
     $.emojiarea.icons = icons;
     $.emojiarea.reverseIcons = reverseIcons;
-
 }]);
 
 emojiApp.directive('contenteditable', [ '$sce', function($sce) {
