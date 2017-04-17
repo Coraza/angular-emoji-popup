@@ -1,19 +1,19 @@
-#Deprecated
+# Deprecated
 
 NOTE: I no longer actively mantain this repository. I've started using ReactJS and Angular 2 now. If you're still using Angular 1.x and need a emoji-popup component I'd encourage you to look at this fork of my original plugin: 
 
 https://github.com/one-signal/emoji-picker
 
-#Angular Emoji
+# Angular Emoji
 
 An angular module to serve multiple purpose:
 
 * A directive to render a comprehensive emoji popup from which user can select an emoji.
 * Filters to encode the message containing emoji to various formats and decode them.
 
-###[Demo](http://coraza.github.io/angular-emoji-popup/)
+### [Demo](http://coraza.github.io/angular-emoji-popup/)
 
-###Note about encoding and decoding
+### Note about encoding and decoding
 There are various standards to encode and decode emojis. Most popular are:
 
 * **Colon:** The emojis are converted to their colon style strings. This is simple to save in the database since its just a string.
@@ -28,7 +28,7 @@ This is the least useful method to adopt as its not cross platform. There is no 
 
 This module contain various filters to encode and decode emojis in the above formats.
 
-##Installation
+## Installation
 
 Only dependencies are `Jquery`, `AngularJs` and `angular-Sanitize` module.
 
@@ -48,7 +48,7 @@ Inject the `emojiApp` module to your app
 angular.module("myApp", ['ngSanitize', 'emojiApp']);
 ```
 
-##Usage
+## Usage
 
 The module consists of following components:
 
@@ -73,7 +73,7 @@ emojiApp.controller('emojiController', ['$scope', function($scope) {
 	$scope.emojiMessage={};
 }]);
 ```
-###Encoding
+### Encoding
 By default, emoji are encoded to colon style string. Hence `emojiMessage.messagetext` will contain the encoded emoji with colons.
 
 `emojiMessage.rawhtml` will contain the raw html string of the message.
@@ -86,7 +86,7 @@ For additional encodings, the following filters can be used
 <div ng-bind="emojiMessage.messagetext | colonToCode"> </div>
 ```
 
-###Decoding
+### Decoding
 For decoding the message string containing either colon style emojis or UTF-8 character emojis, following filters can be used:
 
 * `codeToSmiley` : Converts the string containing UTF-8 characters to smiley representation using HTML
@@ -101,7 +101,7 @@ For decoding the message string containing either colon style emojis or UTF-8 ch
 <div ng-bind-html="emojiMessage.encodedtext | colonToSmiley"></div>
 ```
 
-##How it works
+## How it works
 
 Much of the functionality of this module is driven by the map contained in `config.js` file. It contains a mapping of Emoji UTF-8 character and its colon representation. If you encounter any bugs in this mapping, please raise an issue or send a pull request.
 
@@ -124,7 +124,7 @@ The following text is taken verbatim from [https://github.com/iamcal/js-emoji](h
 
 > You don't need to worry about this if you translate to colon syntax before storage.
 
-##Credits
+## Credits
 This project utilizes snippets and ideas from following open source projects:
 
 * [emoji-cheat-sheet](https://github.com/arvida/emoji-cheat-sheet.com)
